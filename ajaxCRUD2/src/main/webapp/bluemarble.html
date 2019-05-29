@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style>
+            .gameborder {
+                border : 1px solid #000000;
+                height: 50px
+            }
+        </style>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+	//$(document).ready(function(){
+	//$(function(){});	
+	// function(){} -> () =>{}, var -> let // this의 차이가 심하다
+	$(()=>{
+		console.log('page start');
+		const END_LOCATION = 44;
+		let currentLocation = 1;
+		let currentLocationBtnId = '#b'+currentLocation;
+		$(currentLocationBtnId).attr('hidden', false);
+		$('#play').click(()=>{
+			console.log('play button');
+			// 주사위 던지기 전의 위치의 버튼 ID -> hidden:true
+			$(currentLocationBtnId).attr('hidden', true);
+			
+			let diceNum = Math.ceil(Math.random()*6);// 1~6
+			//변수와함수
+			//Math.에찾아가서 ceil메서드
+			console.log('diceNum :'+diceNum);
+			$('#dice').val(diceNum);
+			//매개변수의 값을 앞에$()의 넣는다
+			currentLocation += diceNum;
+			if(currentLocation>END_LOCATION){
+				currentLocation -= END_LOCATION;
+			}
+			$('#point').val(currentLocation);
+			//말의 위치를 이동
+			currentLocationBtnId = '#b'+currentLocation;
+			//보이게
+			$(currentLocationBtnId).attr('hidden', false);
+			
+			$(currentLocationBtnId).click(()=>{
+				console.log('currentLocationBtnId btn click');
+				alert('호텔호호호호호홓호호호호hahahahahahahaahahahahahahahahahahahahahahahahhah')
+		
+			
+			});
+		});	
+	});
+</script>
+</head>
+<body>
+		<div class="container">
+            <h5>
+                Blue Marble
+               <input id="play" type="button" value="주사위 play"/>
+                주사위 값 : <input id="dice" type="text"/>
+                이동 지점 : <input id="point" type="text"/>
+            </h5>
+            <div class="row">
+                <div class="col-sm-1 gameborder">
+                        1<span id="p1"><button id="b1" class="btn-danger" hidden="hidden">♡</button></span>
+                </div>
+                <div class="col-sm-1 gameborder">2<span id="p2"><button id="b2" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">3<span id="p3"><button id="b3" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">4<span id="p4"><button id="b4" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">5<span id="p5"><button id="b5" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">6<span id="p6"><button id="b6" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">7<span id="p7"><button id="b7" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">8<span id="p8"><button id="b8" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">9<span id="p9"><button id="b9" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">10<span id="p10"><button id="b10" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">11<span id="p11"><button id="b11" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">12<span id="p12"><button id="b12" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">44<span id="p44"><button id="b44" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10"><span class="glyphicon glyphicon-arrow-right"></span>&nbsp;</div>
+                <div class="col-sm-1 gameborder">13<span id="p13"><button id="b13" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">43<span id="p43"><button id="b43" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10">&nbsp;</div>
+                <div class="col-sm-1 gameborder">14<span id="p14"><button id="b14" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">42<span id="p42"><button id="b42" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10">&nbsp;</div>
+                <div class="col-sm-1 gameborder">15<span id="p15"><button id="b15" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">41<span id="p41"><button id="b41" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10">&nbsp;</div>
+                <div class="col-sm-1 gameborder">16<span id="p16"><button id="b16" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">40<span id="p40"><button id="b40" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10"><span class="bg-primary">Blue Marble / Copyright @JJDEV</span></div>
+                <div class="col-sm-1 gameborder">17<span id="p17"><button id="b17" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">39<span id="p39"><button id="b39" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10">&nbsp;</div>
+                <div class="col-sm-1 gameborder">18<span id="p18"><button id="b18" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">38<span id="p38"><button id="b38" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10">&nbsp;</div>
+                <div class="col-sm-1 gameborder">19<span id="p19"><button id="b19" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">37<span id="p37"><button id="b37" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10">&nbsp;</div>
+                <div class="col-sm-1 gameborder">20<span id="p20"><button id="b20" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">36<span id="p36"><button id="b36" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10">&nbsp;</div>
+                <div class="col-sm-1 gameborder">21<span id="p21"><button id="b21" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">35<span id="p35"><button id="b35" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-10">&nbsp;</div>
+                <div class="col-sm-1 gameborder">22<span id="p22"><button id="b22" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 gameborder">34<span id="p34"><button id="b34" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">33<span id="p33"><button id="b33" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">32<span id="p32"><button id="b32" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">31<span id="p31"><button id="b31" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">30<span id="p30"><button id="b30" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">29<span id="p29"><button id="b29" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">28<span id="p28"><button id="b28" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">27<span id="p27"><button id="b27" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">26<span id="p26"><button id="b26" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">25<span id="p25"><button id="b25" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">24<span id="p24"><button id="b24" class="btn-danger" hidden="hidden">♡</button></span></div>
+                <div class="col-sm-1 gameborder">23<span id="p23"><button id="b23" class="btn-danger" hidden="hidden">♡</button></span></div>
+            </div>
+		</div>            
+
+</body>
+</html>

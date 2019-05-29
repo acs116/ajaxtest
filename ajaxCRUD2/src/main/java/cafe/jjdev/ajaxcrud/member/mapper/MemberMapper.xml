@@ -1,0 +1,53 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="cafe.jjdev.ajaxcrud.member.mapper.MemberMapper">
+	<select id="selectMemberCount" resultType="int">
+	select count(*) from member
+	</select>
+	
+	<select id="selectMemberList" resultType="cafe.jjdev.ajaxcrud.member.vo.Member">
+	select 
+		id
+		,pw
+		,name
+		,age
+		,gender		
+	from member		
+	limit #{startRow}, #{rowPerPage}
+	</select>
+	
+	<insert id="insertMember" parameterType="cafe.jjdev.ajaxcrud.member.vo.Member">
+	insert into 
+		member
+		(id
+		,pw
+		,name
+		,age
+		,gender) 
+	values(
+		#{id}
+		,#{pw}
+		,#{name}
+		,#{age}
+		,#{gender})	
+	</insert>
+	
+	<delete id="deleteMember" parameterType="cafe.jjdev.ajaxcrud.member.vo.Member">
+	delete from 
+		member 
+	where id= #{id}
+	</delete>
+	
+	<update id="updateMember" parameterType="cafe.jjdev.ajaxcrud.member.vo.Member">
+	update member 
+	set 
+		pw=#{pw}
+		,name=#{name}
+		,age=#{age}
+		,gender=#{gender} 
+		where id=#{id};
+
+	</update>
+</mapper>
